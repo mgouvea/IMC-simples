@@ -37,8 +37,8 @@ function calIMC() {
 
   if (!(imc > 1) || imc === Infinity) {
     imcInput.value = '0';
-    color.style.backgroundColor = ' #fefefe';
-    okImc.textContent = 'teste';
+    color.style.backgroundColor = '#fefefe';
+    okImc.textContent = '';
   } else {
     imcInput.value = imc;
     imcRating(imcInput.value);
@@ -46,7 +46,11 @@ function calIMC() {
 }
 
 function imcRating(imc) {
-  if (imc <= 18.5) {
+  if (imc < 10 || imc > 90) {
+    imcInput.value = 'Inválido';
+    color.style.backgroundColor = '#fefefe';
+    okImc.textContent = '';
+  } else if (imc <= 18.5) {
     color.style.backgroundColor = '#fa4f52';
     okImc.textContent = 'ANOREXIA';
   } else if (imc > 18.5 && imc <= 24.9) {
